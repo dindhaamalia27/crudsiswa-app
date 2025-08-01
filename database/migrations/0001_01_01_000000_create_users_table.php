@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('photo');
             $table->string('name');
             $table->BigInteger('nisn');
+            $table->text('alamat');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
