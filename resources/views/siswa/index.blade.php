@@ -26,7 +26,7 @@
                 <tbody>
                     <tr>
                         <td>foto.jpg</td>
-                        <td>Ruzqi</td>
+                        <td>Dindha</td>
                         <td>XI PPL 2</td>
                         <td>Jl. abc</td>
                         <td class="option-links">
