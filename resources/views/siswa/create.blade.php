@@ -10,15 +10,15 @@
     <h1>Halaman Tambah Siswa</h1>
     <p>Tambah Data Siswa</p>
     <a href="/">kembali</a>
-    <form action="/siswa/store"method="post">
+    <form action="/siswa/store"method="post"enctype="multipart/form-data">
         @csrf
     <div>
         <br>
         <label for="">kelas</label><br>
         <select name="kelas">
-            <option value="1">X PPLG 1</option>
-            <option value="2">XII PPLG 2</option>
-            <option value="3">XIIl PPLG 3</option>
+         @foreach ($clases as $clas)
+            <option value="{{ $clas->id }}">{{ $clas->name }}</option>
+        @endforeach
         </select><br>
            @error('kelas_id')
         <small style="color:red">{{$message}}</small>
@@ -41,10 +41,9 @@
         <br>
         <input type="text" name="nisn">
         <br>
-        @error('nins')
+        @error('nisn')
         <small style="color:red">{{$message}}</small>
         @enderror
-
     </div>
 </br>
     <div>
