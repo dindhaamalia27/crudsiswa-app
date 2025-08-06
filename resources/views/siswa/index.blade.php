@@ -19,20 +19,26 @@
                         <th>Foto</th>
                         <th>Name</th>
                         <th>Kelas</th>
+                        <th>Nisns</th>
                         <th>Alamat</th>
                         <th colspan="3">Option</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($siswas as $siswa)
                     <tr>
-                        <td>foto.jpg</td>
-                        <td>Dindha</td>
-                        <td>XI PPL 2</td>
-                        <td>Jl. abc</td>
+                        <td><img src="{{ asset('storage/' . $siswa->photo) }}" alt="" width="40"></td>
+                        <td>{{$siswa->name}}</td>
+                        <td>{{$siswa->Clas->name}}</td>
+                         <td>{{$siswa->nisn}}</td>
+                        <td>{{$siswa->alamat}}</td>
                         <td class="option-links">
                         <a href="#">Hapus</a>
-                        <a href="#">edit</a>
-                        <a href="#">detail</a>
+                        <a href="#">Edit</a>
+                        <a href="#">Detail</a>
+                        </td>
+                        </tr>
+                      @endforeach
                     </tr>
                     </tbody>
             </table>
