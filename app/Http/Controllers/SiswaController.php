@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+
 use App\Models\clas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -24,9 +26,6 @@ class SiswaController extends Controller
         //alihkan ke halaman create siswa
         return view('siswa.create', compact('clases'));
      }
-
-
-
 
      //fungsi store data siswa
     public function store(Request $request){
@@ -55,5 +54,19 @@ class SiswaController extends Controller
        User::create($datasiswa_store);
        //arahkan User ke halaman beranda
          return redirect('/');
+    }
+    //fungsi delete siswa
+    public function destroy($id){
+        // cari user di dalam database berdasarkan id yang di kirimkan
+        $datauser = User::find($id);
+
+        //lakukan delete pada data tersebut jika data user berhasil ada
+        if ($datauser !=null){
+            Storage::disk('public')->delete($datauser->photo);
+            $datauser->delete();
+        }
+
+        //kembalikan user kehalaman beranda/home
+        return redirect('/');
     }
 }
