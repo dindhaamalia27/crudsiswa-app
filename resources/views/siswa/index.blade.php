@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Halaman Beranda</h1>
 
-        <div class="list-data-siswa">       
+        <div class="list-data-siswa">
             <h2>List Data Siswa</h2>
             <a href="siswa/create">Tambah</a>
             <table border="1">
@@ -44,11 +44,10 @@
                                 @method('DELETE')
                             </form>
 
-                            {{-- Edit --}}
-                            <a href="{{ url('/siswa/' . $siswa->id . '/edit') }}">Edit</a>
+                            <a href="{{url('/siswa/'.$siswa->id. '/edit')}}">Edit</a>
 
-                            {{-- Detail --}}
-                            <a href="{{ url('/siswa/' . $siswa->id) }}">Detail</a>
+                            <a href="{{ url('/siswa/show/' . $siswa->id) }}">Detail</a>
+
                         </td>
                     </tr>
                     @endforeach

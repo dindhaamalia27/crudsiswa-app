@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\clas;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,5 +67,20 @@ class SiswaController extends Controller
 
         //kembalikan user kehalaman beranda/home
         return redirect('/');
+    }
+    // fungsi untuk detail siswa
+    public function show($id){      
+
+        // cari data siswa di dalam tabel user dengan id yang dikirimkan
+        $datauser = User::find($id);
+
+        //cek apakah datanya ada atau tidak
+        if($datauser == null){
+            return redirect('/');
+        }
+
+            //pindahkan user ke halaman detail siswa dengan mengerjakan data detailnya
+        return view('siswa.show',compact('datauser'));
+
     }
 }
