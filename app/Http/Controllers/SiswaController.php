@@ -69,7 +69,7 @@ class SiswaController extends Controller
         return redirect('/');
     }
     // fungsi untuk detail siswa
-    public function show($id){      
+    public function show($id){
 
         // cari data siswa di dalam tabel user dengan id yang dikirimkan
         $datauser = User::find($id);
@@ -81,6 +81,24 @@ class SiswaController extends Controller
 
             //pindahkan user ke halaman detail siswa dengan mengerjakan data detailnya
         return view('siswa.show',compact('datauser'));
-
     }
+
+        //fungsi untuk mengarahkan user kehalaman edit  siswa
+           public function edit($id){
+
+     // siapkan data clas dan tampung  datanya ke dalam variabel
+        $clases = Clas::all();
+
+        //ambil data user berdasarkan id yang di kirimkan
+        $datauser = User::find($id);
+
+        //dd($datauser->nisn);
+
+
+        if($datauser == null){
+            return redirect('/');
+        }
+        return view('siswa.edit', compact('clases', 'datauser'));
+
+           }
 }

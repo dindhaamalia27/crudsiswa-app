@@ -44,7 +44,7 @@
                                 @method('DELETE')
                             </form>
 
-                            <a href="{{url('/siswa/'.$siswa->id. '/edit')}}">Edit</a>
+                            <a href="{{url('/siswa/edit/'.$siswa->id)}}">Edit</a>
 
                             <a href="{{ url('/siswa/show/' . $siswa->id) }}">Detail</a>
 
