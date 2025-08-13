@@ -12,7 +12,7 @@
 
         <div class="list-data-siswa">
             <h2>List Data Siswa</h2>
-            <a href="siswa/create">Tambah</a>
+            <a href="{{ url('siswa/create') }}">Tambah</a>
             <table border="1">
                 <thead>
                     <tr>
@@ -27,25 +27,34 @@
                 <tbody>
                     @foreach ($siswas as $siswa)
                     <tr>
-                        <td><img src="{{ asset('storage/' . $siswa->photo) }}" alt="" width="40"></td>
+                        <td><img src="{{ asset('storage/' . $siswa->photo) }}" alt="" width="70"></td>
                         <td>{{ $siswa->name }}</td>
-                        <td>{{ $siswa->Clas->name }}</td>
+                        <td>{{ $siswa->clas->name ?? '-' }}</td>
                         <td>{{ $siswa->nisn }}</td>
                         <td>{{ $siswa->alamat }}</td>
                         <td class="option-links">
-                            {{-- Delete --}}
-                            <a href="#" onclick="event.preventDefault(); if(confirm('Apakah kamu yakin ingin menghapus data ini?')) { document.getElementById('delete-form-{{ $siswa->id }}').submit(); }">
+
+                            {{-- Tombol Delete --}}
+                            <a href="#"
+                               onclick="event.preventDefault();
+                               if(confirm('Apakah kamu yakin ingin menghapus data ini?')) {
+                                   document.getElementById('delete-form-{{ $siswa->id }}').submit();
+                               }">
                                 Delete
                             </a>
 
-                            {{-- Form delete tersembunyi --}}
-                            <form id="delete-form-{{ $siswa->id }}" action="{{ url('/siswa/' . $siswa->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
+                            {{-- Form delete tersembunyi pakai DELETE --}}
+                            <form id="delete-form-{{ $siswa->id }}"
+                                action="{{ route('siswa.destroy', $siswa->id) }}"
+                                method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
                             </form>
 
-                            <a href="{{url('/siswa/edit/'.$siswa->id)}}">Edit</a>
+                            {{-- Tombol Edit --}}
+                            <a href="{{ url('/siswa/edit/'.$siswa->id) }}">Edit</a>
 
+                            {{-- Tombol Detail --}}
                             <a href="{{ url('/siswa/show/' . $siswa->id) }}">Detail</a>
 
                         </td>
