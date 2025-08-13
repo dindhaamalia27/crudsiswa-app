@@ -86,7 +86,7 @@ class SiswaController extends Controller
         //fungsi untuk mengarahkan user kehalaman edit  siswa
            public function edit($id){
 
-     // siapkan data clas dan tampung  datanya ke dalam variabel
+       // siapkan data clas dan tampung  datanya ke dalam variabel
         $clases = Clas::all();
 
         //ambil data user berdasarkan id yang di kirimkan
@@ -101,4 +101,54 @@ class SiswaController extends Controller
         return view('siswa.edit', compact('clases', 'datauser'));
 
            }
+
+
+        //fungsi update data siswa
+        public function update(Request $request, $id){
+
+         // validasi data
+              $request->validate([
+        'name'         =>'required',
+        'nisn'         =>'required',
+        'alamat'       =>'required',
+        'email'        =>'required ',
+        'no_handphone' =>'required ',
+       ]);
+
+     //siapkan data yang akan di update : cari data siswa / user di database berdasarkan id
+     $datauser= User::find($id);
+
+    // menyiapkan data dalam array untuk update
+        $datasiswa_update =[
+        'clas_id'          => $request->kelas,
+        'name'             => $request->name,
+        'nisn'             => $request->nisn,
+        'alamat'           => $request->alamat,
+        'email'            => $request->email,
+        'no_handphone'     => $request->no_handphone,
+        ];
+
+        // cek apakah user mengubah password atau tidak
+        if ($request->password !== null && $request->password !== '') {
+         $datasiswa_update['password'] = ($request->password);
+      }
+
+          // cek apakah user mengubah gambar atau tidak
+                 if ($request->hasFile('photo')) {
+            // hapus gambar lama kalau ada
+                if ($datauser->photo) {
+                Storage::disk('public')->delete($datauser->photo);
+         }
+              // upload gambar baru
+                $datasiswa_update['photo'] = $request->file('photo')->store('profilesiswa', 'public');
+        }
+
+
+        // update data sesuai dengan data siswa/user yang sudah di siapkan
+         $datauser->update($datasiswa_update);
+
+
+        //kembalikan user ke halaman index
+         return redirect('/');
+     }
 }
