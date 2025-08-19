@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah data clas</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('tittle')
+<tittle>create clas</tittle>
+@endsection
+@section('content')
     <h2>tambah data kelas</h2>
     <a href="{{route('clas.index')}}">kembali</a>
     <br><br>
@@ -29,6 +25,4 @@
     @enderror
     <button type="submit">Simpan</button>
 </form>
-
-</body>
-</html>
+ @endsection

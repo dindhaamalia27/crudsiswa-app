@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Beranda</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+@extends('layouts.app')
+@section('tittle')
+<title>index siswa</title>
+@endsection
+@section('content')
     <div class="container">
         <h1>Halaman Beranda</h1>
-
         <div class="list-data-siswa">
-            <a href="{{url('clas')}}">Menu kelas</a> | <a href="{{url('/clas/siswa')}}">Menu Siswa</a>
             <h2>List Data Siswa</h2>
             <a href="{{ url('siswa/create') }}">Tambah</a>
             <table border="1">
@@ -65,5 +59,4 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+@endsection
