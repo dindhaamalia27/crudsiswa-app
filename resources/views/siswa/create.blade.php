@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman Tambah siswa</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('tittle')
+<tittle>create siswa</tittle>
+@endsection
+@section('content')
     <h1>Halaman Tambah Siswa</h1>
     <p>Tambah Data Siswa</p>
     <a href="/">kembali</a>
@@ -96,5 +92,4 @@
     </div>
     <br>
     <button type="submit">Simpan</button>
-</body>
-</html>
+ @endsection

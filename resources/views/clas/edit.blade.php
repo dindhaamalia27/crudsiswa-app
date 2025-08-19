@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit kelas</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('tittle')
+<tittle>edit clas</tittle>
+@endsection
+@section('content')
     <h1>Edit data kelas</h1>
     <form action="{{ route('clas.update', $clas->id) }}" method="POST">
         @csrf
@@ -26,5 +22,4 @@
         <button type="submit">Update</button>
         <a href="{{ route('clas.index') }}">Batal</a>
     </form>
-</body>
-</html>
+ @endsection
